@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodApp - Delicious Food Delivered Fast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF4500', // Orange Red
+                        secondary: '#FFA500', // Orange
+                        accent: '#FFD700', // Gold
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-primary">FoodApp</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#hero" class="text-gray-700 hover:text-primary">Home</a>
+                    <a href="#features" class="text-gray-700 hover:text-primary">Features</a>
+                    <a href="#menu" class="text-gray-700 hover:text-primary">Menu</a>
+                    <a href="#how-it-works" class="text-gray-700 hover:text-primary">How It Works</a>
+                    <a href="#reviews" class="text-gray-700 hover:text-primary">Reviews</a>
+                    <a href="order-page.html" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="bg-gradient-to-r from-primary to-secondary text-white py-20 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold mb-6">Savor the Flavor: Delicious Meals Delivered Fast!</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Craving your favorite dishes? Order now from top restaurants and get hot, fresh food delivered to your door in minutes. Easy ordering, fast delivery, endless variety!</p>
+            <div class="space-x-4">
+                <a href="order-page.html" class="inline-block bg-accent text-primary px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400">Order Now</a>
+                <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary">Explore Menu</button>
+            </div>
+        </div>
+        <!-- Image suggestion: delivery-boy-with-food.jpg -->
+        <div class="mt-10">
+            <img src="https://via.placeholder.com/800x400?text=Food+Delivery+Hero+Image" alt="Food Delivery" class="mx-auto rounded-lg shadow-lg">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why Choose FoodApp?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <!-- Image suggestion: delivery-icon.png -->
+                    <img src="https://via.placeholder.com/100x100?text=Fast+Delivery" alt="Fast Delivery" class="mx-auto mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Lightning-Fast Delivery</h3>
+                    <p>Get your food in under 30 minutes with our express delivery service.</p>
+                </div>
+                <div class="text-center">
+                    <!-- Image suggestion: order-icon.png -->
+                    <img src="https://via.placeholder.com/100x100?text=Easy+Ordering" alt="Easy Ordering" class="mx-auto mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Effortless Ordering</h3>
+                    <p>User-friendly app for quick and seamless food ordering experience.</p>
+                </div>
+                <div class="text-center">
+                    <!-- Image suggestion: payment-icon.png -->
+                    <img src="https://via.placeholder.com/100x100?text=Secure+Payments" alt="Secure Payments" class="mx-auto mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Secure Payments</h3>
+                    <p>Multiple payment options including card, UPI, and cash on delivery.</p>
+                </div>
+                <div class="text-center">
+                    <!-- Image suggestion: tracking-icon.png -->
+                    <img src="https://via.placeholder.com/100x100?text=Real-Time+Tracking" alt="Real-Time Tracking" class="mx-auto mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Real-Time Tracking</h3>
+                    <p>Watch your order from kitchen to doorstep with live updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Dishes Section -->
+    <section id="menu" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Popular Categories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Image suggestion: pizza.jpg -->
+                    <img src="https://via.placeholder.com/300x200?text=Pizza" alt="Pizza" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Pizza</h3>
+                        <p>Crispy crust, gooey cheese, fresh toppings. Perfect for any occasion.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Image suggestion: burger.jpg -->
+                    <img src="https://via.placeholder.com/300x200?text=Burgers" alt="Burgers" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Burgers</h3>
+                        <p>Juicy patties, fresh buns, delicious sauces. A classic favorite.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Image suggestion: biryani.jpg -->
+                    <img src="https://via.placeholder.com/300x200?text=Biryani" alt="Biryani" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Biryani</h3>
+                        <p>Aromatic rice, tender meat, rich spices. A flavorful delight.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Image suggestion: dessert.jpg -->
+                    <img src="https://via.placeholder.com/300x200?text=Desserts" alt="Desserts" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Desserts</h3>
+                        <p>Sweet treats to end your meal perfectly. Indulge in sweetness.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <!-- Image suggestion: step1.jpg -->
+                    <img src="https://via.placeholder.com/200x200?text=Step+1" alt="Step 1" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold mb-2">1. Choose Your Cravings</h3>
+                    <p>Browse our extensive menu and select your favorite dishes from top restaurants.</p>
+                </div>
+                <div class="text-center">
+                    <!-- Image suggestion: step2.jpg -->
+                    <img src="https://via.placeholder.com/200x200?text=Step+2" alt="Step 2" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold mb-2">2. Place Your Order</h3>
+                    <p>Secure payment and confirm your order with just a few taps.</p>
+                </div>
+                <div class="text-center">
+                    <!-- Image suggestion: step3.jpg -->
+                    <img src="https://via.placeholder.com/200x200?text=Step+3" alt="Step 3" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold mb-2">3. Enjoy Delivery</h3>
+                    <p>Track your order in real-time and receive your hot meal at your doorstep.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">What Our Customers Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <!-- Image suggestion: customer1.jpg -->
+                    <img src="https://via.placeholder.com/100x100?text=Emily+R" alt="Emily R" class="mx-auto mb-4 rounded-full">
+                    <p class="text-center mb-4">"Best food delivery app! Always on time and delicious."</p>
+                    <p class="text-center font-semibold">- Emily R.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <!-- Image suggestion: customer2.jpg -->
+                    <img src="https://via.placeholder.com/100x100?text=David+L" alt="David L" class="mx-auto mb-4 rounded-full">
+                    <p class="text-center mb-4">"Love the variety and easy interface."</p>
+                    <p class="text-center font-semibold">- David L.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <!-- Image suggestion: customer3.jpg -->
+                    <img src="https://via.placeholder.com/100x100?text=Sophia+M" alt="Sophia M" class="mx-auto mb-4 rounded-full">
+                    <p class="text-center mb-4">"Fast and reliable service every time."</p>
+                    <p class="text-center font-semibold">- Sophia M.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">FoodApp</h3>
+                    <p>Delicious food delivered fast to your doorstep.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p>Email: support@foodapp.com</p>
+                    <p>Phone: +1 (123) 456-7890</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                    <div class="space-x-4">
+                        <a href="#" class="hover:text-primary">Facebook</a>
+                        <a href="#" class="hover:text-primary">Instagram</a>
+                        <a href="#" class="hover:text-primary">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 FoodApp. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodApp Order Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF4500',
+                        secondary: '#FFA500',
+                        accent: '#FFD700',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <header class="bg-white shadow-md sticky top-0 z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white font-bold text-lg">F</div>
+                    <div>
+                        <h1 class="text-xl font-bold text-primary">FoodApp</h1>
+                        <p class="text-sm text-gray-500">Order fresh meals in minutes</p>
+                    </div>
+                </div>
+                <div class="flex-1 w-full md:max-w-lg">
+                    <label class="relative block">
+                        <span class="sr-only">Search food or restaurant</span>
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">🔍</span>
+                        <input id="searchInput" type="search" placeholder="Search food, restaurant..." class="w-full border border-gray-200 rounded-full py-3 pl-10 pr-4 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20" />
+                    </label>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="food-landing-page.html" class="text-gray-700 hover:text-primary">Back to Home</a>
+                    <button id="cartButton" class="relative bg-primary text-white px-4 py-3 rounded-full flex items-center gap-2 hover:bg-secondary">
+                        🛒 Cart
+                        <span id="cartCount" class="bg-white text-primary font-semibold rounded-full w-6 h-6 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <section class="mb-10">
+            <div class="flex flex-col lg:flex-row items-start justify-between gap-6">
+                <div class="space-y-3">
+                    <h2 class="text-3xl sm:text-4xl font-bold">Find your next meal.</h2>
+                    <p class="text-gray-600 max-w-2xl">Choose from trending categories, filter by price or rating, and add delicious dishes to your cart instantly.</p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button class="px-5 py-3 rounded-full bg-secondary text-white font-semibold hover:bg-yellow-400">Fast Delivery</button>
+                    <button class="px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 hover:border-primary hover:text-primary">Live Tracking</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-10">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-xl font-bold">Food Categories</h3>
+                    <p class="text-sm text-gray-500">Swipe or browse your favorite cuisine.</p>
+                </div>
+            </div>
+            <div class="flex gap-4 overflow-x-auto pb-2">
+                <button class="categoryButton px-5 py-3 rounded-full bg-primary text-white whitespace-nowrap" data-category="All">All</button>
+                <button class="categoryButton px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 whitespace-nowrap" data-category="Pizza">Pizza</button>
+                <button class="categoryButton px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 whitespace-nowrap" data-category="Biryani">Biryani</button>
+                <button class="categoryButton px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 whitespace-nowrap" data-category="Burgers">Burgers</button>
+                <button class="categoryButton px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 whitespace-nowrap" data-category="Desserts">Desserts</button>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 xl:grid-cols-[1.4fr_0.6fr] gap-8">
+            <div>
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                    <div class="flex flex-wrap gap-3">
+                        <button id="sortPriceButton" class="px-4 py-2 bg-white border border-gray-200 rounded-full text-gray-700 hover:border-primary hover:text-primary">Sort: Price low to high</button>
+                        <button id="sortRatingButton" class="px-4 py-2 bg-white border border-gray-200 rounded-full text-gray-700 hover:border-primary hover:text-primary">Sort: Rating</button>
+                    </div>
+                    <div class="flex gap-3 items-center">
+                        <span class="text-sm text-gray-500">Filter:</span>
+                        <select id="vegFilter" class="border border-gray-200 rounded-full px-4 py-2 bg-white focus:border-primary focus:ring-2 focus:ring-primary/20">
+                            <option value="all">All</option>
+                            <option value="veg">Veg</option>
+                            <option value="nonveg">Non-Veg</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="foodGrid" class="grid gap-6 sm:grid-cols-2">
+                    <!-- Food cards will be injected here -->
+                </div>
+            </div>
+
+            <aside class="bg-white rounded-3xl shadow-lg p-6 sticky top-24 self-start">
+                <div class="flex items-center justify-between mb-5">
+                    <div>
+                        <h3 class="text-xl font-bold">Your Cart</h3>
+                        <p class="text-sm text-gray-500">Keep the yum coming.</p>
+                    </div>
+                </div>
+                <div id="cartList" class="space-y-4 min-h-[220px]">
+                    <p class="text-gray-500">No items added yet.</p>
+                </div>
+                <div class="border-t border-gray-200 mt-6 pt-4 space-y-3">
+                    <div class="flex justify-between text-gray-600"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+                    <div class="flex justify-between text-gray-600"><span>Delivery</span><span id="deliveryFee">$3.50</span></div>
+                    <div class="flex justify-between text-lg font-semibold"><span>Total</span><span id="totalPrice">$3.50</span></div>
+                </div>
+                <button id="checkoutButton" class="w-full mt-5 px-5 py-3 rounded-full bg-primary text-white font-semibold hover:bg-secondary">Proceed to Checkout</button>
+            </aside>
+        </section>
+
+        <section class="mt-12 bg-white rounded-3xl shadow-lg p-6">
+            <h3 class="text-xl font-bold mb-4">Order Summary</h3>
+            <div class="grid gap-4 sm:grid-cols-2">
+                <div class="bg-gray-50 rounded-3xl p-5">
+                    <h4 class="font-semibold mb-2">Delivery Details</h4>
+                    <p class="text-gray-600">123 Food Street, Central City</p>
+                    <p class="text-gray-600">Expected delivery in 25-35 mins.</p>
+                </div>
+                <div class="bg-gray-50 rounded-3xl p-5">
+                    <h4 class="font-semibold mb-2">Checkout Preview</h4>
+                    <p class="text-gray-600">Item details, quantity, and total will update as you add food.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="font-semibold">Need help? Contact support@foodapp.com</p>
+            <div class="flex items-center justify-center gap-4 mt-4 text-sm text-gray-400">
+                <span>Facebook</span>
+                <span>Instagram</span>
+                <span>Twitter</span>
+            </div>
+            <p class="mt-4 text-xs text-gray-500">&copy; 2026 FoodApp. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const foodItems = [
+            { id: 1, name: 'Margherita Pizza', category: 'Pizza', price: 12.99, rating: 4.8, type: 'veg', image: 'https://via.placeholder.com/320x220?text=Pizza' },
+            { id: 2, name: 'Chicken Biryani', category: 'Biryani', price: 14.99, rating: 4.7, type: 'nonveg', image: 'https://via.placeholder.com/320x220?text=Biryani' },
+            { id: 3, name: 'Cheese Burger', category: 'Burgers', price: 10.49, rating: 4.6, type: 'nonveg', image: 'https://via.placeholder.com/320x220?text=Burgers' },
+            { id: 4, name: 'Chocolate Lava Cake', category: 'Desserts', price: 6.99, rating: 4.9, type: 'veg', image: 'https://via.placeholder.com/320x220?text=Desserts' },
+            { id: 5, name: 'Paneer Tikka Pizza', category: 'Pizza', price: 13.49, rating: 4.5, type: 'veg', image: 'https://via.placeholder.com/320x220?text=Pizza' },
+            { id: 6, name: 'Veg Burger', category: 'Burgers', price: 9.49, rating: 4.3, type: 'veg', image: 'https://via.placeholder.com/320x220?text=Burgers' }
+        ];
+
+        const cartKey = 'foodapp_order_cart';
+        let cart = JSON.parse(sessionStorage.getItem(cartKey) || '{}');
+        let currentCategory = 'All';
+        let currentSort = null;
+        let currentFilter = 'all';
+
+        const foodGrid = document.getElementById('foodGrid');
+        const cartList = document.getElementById('cartList');
+        const cartCount = document.getElementById('cartCount');
+        const subtotalEl = document.getElementById('subtotal');
+        const totalPriceEl = document.getElementById('totalPrice');
+        const deliveryFeeEl = document.getElementById('deliveryFee');
+        const searchInput = document.getElementById('searchInput');
+
+        const DELIVERY_FEE = 3.50;
+
+        function saveCart() {
+            sessionStorage.setItem(cartKey, JSON.stringify(cart));
+        }
+
+        function renderFoodCards() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            let items = [...foodItems];
+
+            if (currentCategory !== 'All') {
+                items = items.filter(item => item.category === currentCategory);
+            }
+
+            if (currentFilter === 'veg') {
+                items = items.filter(item => item.type === 'veg');
+            } else if (currentFilter === 'nonveg') {
+                items = items.filter(item => item.type === 'nonveg');
+            }
+
+            if (searchTerm) {
+                items = items.filter(item => item.name.toLowerCase().includes(searchTerm) || item.category.toLowerCase().includes(searchTerm));
+            }
+
+            if (currentSort === 'price') {
+                items.sort((a, b) => a.price - b.price);
+            } else if (currentSort === 'rating') {
+                items.sort((a, b) => b.rating - a.rating);
+            }
+
+            foodGrid.innerHTML = items.map(item => `
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+                    <img src="${item.image}" alt="${item.name}" class="w-full h-56 object-cover" />
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-semibold px-3 py-1 rounded-full ${item.type === 'veg' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${item.type === 'veg' ? 'Veg' : 'Non-Veg'}</span>
+                            <span class="text-sm text-gray-500">${item.category}</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">${item.name}</h4>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-primary font-bold">$${item.price.toFixed(2)}</span>
+                            <span class="text-sm text-gray-600">⭐ ${item.rating}</span>
+                        </div>
+                        <button onclick="addToCart(${item.id})" class="w-full px-4 py-3 rounded-full bg-primary text-white font-semibold hover:bg-secondary">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderCart() {
+            const keys = Object.keys(cart);
+            if (!keys.length) {
+                cartList.innerHTML = '<p class="text-gray-500">No items added yet.</p>';
+                cartCount.textContent = '0';
+                subtotalEl.textContent = '$0.00';
+                totalPriceEl.textContent = `$${DELIVERY_FEE.toFixed(2)}`;
+                return;
+            }
+
+            cartList.innerHTML = keys.map(id => {
+                const item = foodItems.find(menu => menu.id === Number(id));
+                const quantity = cart[id];
+                const itemTotal = item.price * quantity;
+                return `
+                    <div class="rounded-3xl bg-gray-50 p-4">
+                        <div class="flex items-start gap-3">
+                            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-2xl object-cover" />
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between gap-2">
+                                    <div>
+                                        <h4 class="font-semibold">${item.name}</h4>
+                                        <p class="text-sm text-gray-500">$${item.price.toFixed(2)} each</p>
+                                    </div>
+                                    <span class="text-sm font-semibold">$${itemTotal.toFixed(2)}</span>
+                                </div>
+                                <div class="mt-3 flex items-center gap-2 text-sm">
+                                    <button onclick="updateQuantity(${item.id}, ${quantity - 1})" class="w-9 h-9 rounded-full bg-white border border-gray-200 text-gray-700">-</button>
+                                    <span class="font-semibold">${quantity}</span>
+                                    <button onclick="updateQuantity(${item.id}, ${quantity + 1})" class="w-9 h-9 rounded-full bg-white border border-gray-200 text-gray-700">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            const totalQuantity = keys.reduce((sum, id) => sum + cart[id], 0);
+            const subtotal = keys.reduce((sum, id) => {
+                const item = foodItems.find(menu => menu.id === Number(id));
+                return sum + item.price * cart[id];
+            }, 0);
+
+            cartCount.textContent = totalQuantity.toString();
+            subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+            totalPriceEl.textContent = `$${(subtotal + DELIVERY_FEE).toFixed(2)}`;
+        }
+
+        function addToCart(itemId) {
+            cart[itemId] = (cart[itemId] || 0) + 1;
+            saveCart();
+            renderCart();
+        }
+
+        function updateQuantity(itemId, quantity) {
+            if (quantity <= 0) {
+                delete cart[itemId];
+            } else {
+                cart[itemId] = quantity;
+            }
+            saveCart();
+            renderCart();
+        }
+
+        function setCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('.categoryButton').forEach(button => {
+                if (button.dataset.category === category) {
+                    button.classList.replace('bg-white', 'bg-primary');
+                    button.classList.replace('text-gray-700', 'text-white');
+                    button.classList.replace('border-gray-200', 'border-transparent');
+                } else {
+                    button.classList.replace('bg-primary', 'bg-white');
+                    button.classList.replace('text-white', 'text-gray-700');
+                    button.classList.replace('border-transparent', 'border-gray-200');
+                }
+            });
+            renderFoodCards();
+        }
+
+        document.getElementById('sortPriceButton').addEventListener('click', () => {
+            currentSort = 'price';
+            renderFoodCards();
+        });
+
+        document.getElementById('sortRatingButton').addEventListener('click', () => {
+            currentSort = 'rating';
+            renderFoodCards();
+        });
+
+        document.getElementById('vegFilter').addEventListener('change', (event) => {
+            currentFilter = event.target.value;
+            renderFoodCards();
+        });
+
+        searchInput.addEventListener('input', () => {
+            renderFoodCards();
+        });
+
+        document.querySelectorAll('.categoryButton').forEach(button => {
+            button.addEventListener('click', () => setCategory(button.dataset.category));
+        });
+
+        renderFoodCards();
+        renderCart();
+    </script>
+</body>
+</html>
