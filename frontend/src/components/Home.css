@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ff7a18;
+  color: white;
+  padding: 15px 30px;
+}
+
+.logout-btn {
+  background: #ff3c38;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #d92f2b;
+}
+
+/* Search */
+.search-bar {
+  padding: 20px;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 60%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ffd166;
+}
+
+/* Grid */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Card */
+.food-card {
+  background: #fff8f0;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.food-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.food-card h3 {
+  margin: 10px 0;
+}
+
+.food-card button {
+  background: linear-gradient(90deg, #ff7a18, #ff3c38);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.food-card button:hover {
+  opacity: 0.9;
+}
