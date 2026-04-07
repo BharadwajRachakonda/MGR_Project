@@ -25,14 +25,24 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/id/{userId}")
+    public User getUserById(@PathVariable String userId) {
+        return userService.getUserByUserId(userId);
+    }
+
+    @GetMapping("/email/{email}")
     public User getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable String id) {
-        userService.deleteUser(id);
+    @PutMapping("/{userId}")
+    public User updateUser(@PathVariable String userId, @RequestBody User user) {
+        return userService.updateUser(userId, user);
+    }
+
+    @DeleteMapping("/{userId}")
+    public String deleteUser(@PathVariable String userId) {
+        userService.deleteUser(userId);
         return "Deleted successfully";
     }
 }

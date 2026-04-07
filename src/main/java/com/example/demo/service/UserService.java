@@ -22,8 +22,22 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User getUserByUserId(String userId) {
+        return userRepository.findByUserId(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    public User updateUser(String userId, User updatedUser) {
+        User existingUser = getUserByUserId(userId);
+        existingUser.setName(updatedUser.getName());
+        existingUser.setEmail(updatedUser.getEmail());
+        existingUser.setPassword(updatedUser.getPassword());
+        return userRepository.save(existingUser);
+    }
+
     public void deleteUser(String id) {
-        userRepository.deleteById(id);
+        User user = getUserByUserId(id);
+        userRepository.delete(user);
     }
 
     public User getUserByEmail(String email) {
