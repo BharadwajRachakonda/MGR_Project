@@ -2,10 +2,12 @@ package com.example.demo.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.model.User;
+import com.example.demo.model.LoginRequest;
 import com.example.demo.service.UserService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3001")
 @RequestMapping("/api/users")
 public class UserController {
 
@@ -44,5 +46,10 @@ public class UserController {
     public String deleteUser(@PathVariable String userId) {
         userService.deleteUser(userId);
         return "Deleted successfully";
+    }
+
+    @PostMapping("/login")
+    public User login(@RequestBody LoginRequest loginRequest) {
+        return userService.login(loginRequest.getEmail(), loginRequest.getPassword());
     }
 }
