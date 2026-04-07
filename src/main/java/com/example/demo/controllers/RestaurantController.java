@@ -24,10 +24,10 @@ public class RestaurantController {
         this.restaurantService = restaurantService;
     }
 
-    @PostMapping
-    public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
-        return restaurantService.createRestaurant(restaurant);
-    }
+    // @PostMapping
+    // public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
+    // return restaurantService.createRestaurant(restaurant);
+    // }
 
     @GetMapping
     public List<Restaurant> getAllRestaurants() {
@@ -39,14 +39,15 @@ public class RestaurantController {
         return restaurantService.getRestaurantByRestaurantId(restaurantId);
     }
 
-    @PutMapping("/{restaurantId}")
-    public Restaurant updateRestaurant(@PathVariable String restaurantId, @RequestBody Restaurant restaurant) {
-        return restaurantService.updateRestaurant(restaurantId, restaurant);
-    }
+    // @PutMapping("/{restaurantId}")
+    // public Restaurant updateRestaurant(@PathVariable String restaurantId,
+    // @RequestBody Restaurant restaurant) {
+    // return restaurantService.updateRestaurant(restaurantId, restaurant);
+    // }
 
-    @DeleteMapping("/{restaurantId}")
-    public String deleteRestaurant(@PathVariable String restaurantId) {
-        restaurantService.deleteRestaurant(restaurantId);
-        return "Deleted successfully";
-    }
+    // @DeleteMapping("/{restaurantId}")
+    // public String deleteRestaurant(@PathVariable String restaurantId) {
+    // restaurantService.deleteRestaurant(restaurantId);
+    // return "Deleted successfully";
+    // }
 }
