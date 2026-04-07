@@ -14,15 +14,17 @@ public class MenuItem {
     private String name;
     private BigDecimal price;
     private String restaurantId;
+    private String imageURL;
 
     public MenuItem() {
     }
 
-    public MenuItem(String itemId, String name, BigDecimal price, String restaurantId) {
+    public MenuItem(String itemId, String name, BigDecimal price, String restaurantId, String imageURL) {
         this.itemId = itemId;
         this.name = name;
         this.price = price;
         this.restaurantId = restaurantId;
+        this.imageURL = imageURL;
     }
 
     public String getId() {
@@ -59,5 +61,13 @@ public class MenuItem {
 
     public void setRestaurantId(String restaurantId) {
         this.restaurantId = restaurantId;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }
