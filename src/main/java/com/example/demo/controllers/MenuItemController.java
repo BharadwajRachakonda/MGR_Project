@@ -25,10 +25,10 @@ public class MenuItemController {
         this.menuItemService = menuItemService;
     }
 
-    @PostMapping
-    public MenuItem createMenuItem(@RequestBody MenuItem menuItem) {
-        return menuItemService.createMenuItem(menuItem);
-    }
+    // @PostMapping
+    // public MenuItem createMenuItem(@RequestBody MenuItem menuItem) {
+    // return menuItemService.createMenuItem(menuItem);
+    // }
 
     @GetMapping
     public List<MenuItem> getAllMenuItems(@RequestParam(required = false) String restaurantId) {
@@ -43,14 +43,15 @@ public class MenuItemController {
         return menuItemService.getMenuItemByItemId(itemId);
     }
 
-    @PutMapping("/{itemId}")
-    public MenuItem updateMenuItem(@PathVariable String itemId, @RequestBody MenuItem menuItem) {
-        return menuItemService.updateMenuItem(itemId, menuItem);
-    }
+    // @PutMapping("/{itemId}")
+    // public MenuItem updateMenuItem(@PathVariable String itemId, @RequestBody
+    // MenuItem menuItem) {
+    // return menuItemService.updateMenuItem(itemId, menuItem);
+    // }
 
-    @DeleteMapping("/{itemId}")
-    public String deleteMenuItem(@PathVariable String itemId) {
-        menuItemService.deleteMenuItem(itemId);
-        return "Deleted successfully";
-    }
+    // @DeleteMapping("/{itemId}")
+    // public String deleteMenuItem(@PathVariable String itemId) {
+    // menuItemService.deleteMenuItem(itemId);
+    // return "Deleted successfully";
+    // }
 }

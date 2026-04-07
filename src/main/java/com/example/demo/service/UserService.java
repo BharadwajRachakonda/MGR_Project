@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import com.example.demo.model.User;
 import com.example.demo.respository.UserRepository;
 import java.util.List;
@@ -24,7 +26,7 @@ public class UserService {
 
     public User getUserByUserId(String userId) {
         return userRepository.findByUserId(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
     }
 
     public User updateUser(String userId, User updatedUser) {
@@ -41,7 +43,16 @@ public class UserService {
     }
 
     public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        List<User> users = userRepository.findAllByEmail(email);
+
+        if (users.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+
+        if (users.size() > 1) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Multiple users found for email");
+        }
+
+        return users.get(0);
     }
 }
